@@ -44,6 +44,6 @@ class DespesasController < ApplicationController
 
     private 
         def despesa_params
-            params.require(:despesa).permit(:descricao, :valor, :data)
+            params.require(:despesa).permit(:descricao, :valor, :data, :categoria)
         end
 end
