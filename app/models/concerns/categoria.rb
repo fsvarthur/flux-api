@@ -1,4 +1,4 @@
-module Category
+module Categoria
     extend ActiveSupport::Concern
 
     CATEGORIAS = ['Alimentação','Saúde','Moradia','Transporte','Educação','Lazer','Imprevistos']

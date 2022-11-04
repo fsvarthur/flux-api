@@ -1,12 +1,8 @@
 require "test_helper"
 
 class DespesaTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
-
   def setup
-    @despesa = Despesa.new(descricao: "test", valor:100.00, data: Time.now)
+    @despesa = Despesa.new(descricao: "test", valor:100.00, data: Time.now,categoria: 'Saúde')
   end
 
   def test_despesa_valid?
@@ -26,12 +22,7 @@ class DespesaTest < ActiveSupport::TestCase
     assert_not @despesa.valid?
   end
 
-  def test_valor_not_valid
-    @despesa.valor = -0.1
-    assert_not @despesa.valid?
-  end
-
   def test_data_not_valid
-    refuse_match Time.now-1, @despesa.data
+    refute_match Time.now-1, @despesa.data
   end
 end
