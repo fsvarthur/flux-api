@@ -43,6 +43,9 @@ class ReceitasController < ApplicationController
         end
     end
 
+    def mes
+    end
+
     private 
         def receita_params
             params.require(:receita).permit(:descricao, :valor, :data)
