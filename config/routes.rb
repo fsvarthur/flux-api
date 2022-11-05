@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
-  resources :receitas
-  get 'receitas/:ano/:mes', to: 'receitas#mes', as: 'receitas_mes'
-  resources :despesas
+  resources :receitas do
+    collection do
+      get ':ano/:mes', to: 'receitas#mes', as: 'receitas_mes'
+    end
+  end
+  resources :despesas do
+    collection do
+      get ':ano/:mes', to: 'despesas#mes', as: 'despesas_mes'
+    end
+  end
 end

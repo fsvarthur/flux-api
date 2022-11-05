@@ -44,6 +44,8 @@ class ReceitasController < ApplicationController
     end
 
     def mes
+        @receita = Receita.where("extract(year from data) = ? and extract(month from data) = ?", params[:ano], params[:mes])
+        render :json => @receita
     end
 
     private 
