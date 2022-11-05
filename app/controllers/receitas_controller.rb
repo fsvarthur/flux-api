@@ -48,6 +48,14 @@ class ReceitasController < ApplicationController
         render :json => @receita
     end
 
+    def resumo
+        #join with despesas
+        @receitas = Receita.where("extract(year from data) = ? and extract(month from data) = ?", params[:ano], params[:mes])
+        @despesas = Despesa.where("extract(year from data) = ? and extract(month from data) = ?", params[:ano], params[:mes])
+        @resumo = @receitas + @despesas
+        render :json => @resumo
+    end
+
     private 
         def receita_params
             params.require(:receita).permit(:descricao, :valor, :data)
