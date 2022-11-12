@@ -1,20 +1,24 @@
-FROM ruby:3.0.0-alpine
+FROM ruby:3.0-alpine3.15
 
-ENV HOME /home/app
+RUN apt-get update -qq && apt-get install -yq --no-install-recommends \
+      build-essential \
+      gnupg2 \
+      less \
+      git \
+      libpq-dev \
+      libbips42 \
+      && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-RUN mkdir -p $HOME
+ENV LANG=C.UTF-8 \
+  BUNDLE_JOBS=4 \
+  BUNDLE_RETRY=3
 
-WORKDIR $HOME
+RUN gem update --system && gem install bundler
 
-ADD . $HOME
-RUN apt-get update && \
-    apt-get install -y imagemagick tzdata && \
-    apt-get autoremove -y && \
-    cp config/database.postgresql.yml config/database.yml && \
-    gem install bundler && \
-    bundle config set --local deployment 'true' && \
-    bundle install --deployment && \
-    bundle exec rails assets:precompile 
+WORKDIR /usr/src/app
 
-CMD ["bundle","exec","rails","s" ]
-EXPOSE 3000
+ENTRYPOINT ["./entrypoint.sh"]
+
+EXPOSE 3030
+
+CMD ["bundle","exec","rails","s","-b","0.0.0.0"]
