@@ -6,13 +6,17 @@ ruby "3.0.0"
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.4"
 
-# Use sqlite3 as the database for Active Record
+# Use sqlite3 test
 gem "sqlite3", "~> 1.4"
+
+# Use postgres production/dev
+gem 'pg'
+
+#
+gem 'dotenv-rails'
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
-
-gem "sprockets-rails"
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"

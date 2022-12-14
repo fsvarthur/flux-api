@@ -100,6 +100,10 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    dotenv (2.8.1)
+    dotenv-rails (2.8.1)
+      dotenv (= 2.8.1)
+      railties (>= 3.2)
     erubi (1.11.0)
     execjs (2.8.1)
     ffi (1.15.5)
@@ -136,6 +140,7 @@ GEM
     nokogiri (1.13.9-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
+    pg (1.4.5)
     popper_js (2.11.6)
     public_suffix (5.0.0)
     puma (5.6.5)
@@ -234,12 +239,13 @@ DEPENDENCIES
   capybara
   debug
   devise
+  dotenv-rails
   jbuilder
+  pg
   puma (~> 5.0)
   rails (~> 7.0.4)
   redis (~> 4.0)
   selenium-webdriver
-  sprockets-rails
   sqlite3 (~> 1.4)
   tzinfo-data
   web-console

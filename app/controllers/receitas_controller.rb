@@ -13,7 +13,7 @@ class ReceitasController < ApplicationController
         end
     end
 
-    #should not allow create a new receita with the same descricao and inside the same month.
+    
     def create
         @receita = Receita.new(receita_params)
         if @receita.save
