@@ -7,7 +7,10 @@ class ReceitasController < ApplicationController
 
     def show
         @receita = Receita.find(params[:id])
-        render :json => @receita
+
+        if stale?(last_modified: @receita.updated_at.utc, etag: @receita)
+            render :json => @receita
+        end
     end
 
     #should not allow create a new receita with the same descricao and inside the same month.
